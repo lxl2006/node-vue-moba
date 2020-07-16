@@ -7,12 +7,14 @@
         <el-input v-model="model.name"></el-input>
       </el-form-item>
       <el-form-item label="图标">
+        <!-- 点击此按钮，选择图片，就实现了上传！ -->
+        <!-- action是后台接口地址，是组件内部的ajax请求，所以需要完整地址 -->
+        <!-- on-success是上传后用于接收服务器响应的函数 -->
         <el-upload
           class="avatar-uploader"
-          :action="axios.defaults.baseURL + '/upload'"
+          :action="axios.defaults.baseURL + '/upload'" 
           :show-file-list="false"
           :on-success="afterUpload"
-          
         >
           <img v-if="model.icon" :src="model.icon" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -55,7 +57,8 @@ export default {
       this.model = res;
     },
     afterUpload(res) {
-      console.log(res)
+      // console.log(res.url)
+      // Vue的响应式问题，model开始是空对象，没有icon属性，所以用$set来赋值
       this.$set(this.model, 'icon', res.url)
       // this.model.icon = res.url
     }

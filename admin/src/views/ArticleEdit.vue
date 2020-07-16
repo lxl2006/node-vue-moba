@@ -16,6 +16,9 @@
       <el-form-item label="文章标题">
         <el-input v-model="model.title"></el-input>
       </el-form-item>
+      <el-form-item label="文章内容s">
+        <vue-editor v-model="model.body" useCustomImageHandler @image-added="handleImageAdded"></vue-editor>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
       </el-form-item>
@@ -24,10 +27,15 @@
 </template>
 
 <script>
+import { VueEditor } from "vue2-editor";
+
 export default {
   // 接收URL中的参数
   props: {
     id: {}
+  },
+  components: {
+    VueEditor
   },
   data() {
     return {
@@ -56,6 +64,28 @@ export default {
     async fetchCategories() {
       const { data: res } = await this.axios.get(`rest/categories`);
       this.categories = res
+    },
+    async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
+
+      var formData = new FormData();
+      formData.append("file", file);
+
+      const { data: res } = await this.axios.post('upload', formData)
+      Editor.insertEmbed(cursorLocation, "image", res.url)
+      resetUploader()
+      // axios({
+      //   url: "https://fakeapi.yoursite.com/images",
+      //   method: "POST",
+      //   data: formData
+      // })
+      //   .then(result => {
+      //     let url = result.data.url; // Get url from response
+      //     Editor.insertEmbed(cursorLocation, "image", url);
+      //     resetUploader();
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
     }
   },
   created() {

@@ -7,7 +7,7 @@ app.use( require('cors')())
 // 能够处理json
 app.use(express.json())
 // 处理静态资源-图像
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 // 数据库的连接、相关操作
 require('./plugins/mongoose')(app)

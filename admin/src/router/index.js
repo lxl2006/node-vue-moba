@@ -9,6 +9,8 @@ import HeroEdit from '../views/HeroEdit.vue'
 import HeroList from '../views/HeroList.vue'
 import ArticleEdit from '../views/ArticleEdit.vue'
 import ArticleList from '../views/ArticleList.vue'
+import AdEdit from '../views/AdEdit.vue'
+import AdList from '../views/AdList.vue'
 
 Vue.use(VueRouter)
 
@@ -20,7 +22,7 @@ Vue.use(VueRouter)
     children: [
       // 分类
       {path: '/categories/create',component: CategoryEdit},
-      // props属性表示，将URL中的参数注入到对应组件，在组件内定义props属性进行接收。
+      // props属性表示，将URL中的参数(:id)注入到对应组件，在组件内定义props属性进行接收。
       {path: '/categories/edit/:id',component: CategoryEdit,props: true},
       {path: '/categories/list',component: CategoryList},
       // 物品
@@ -34,7 +36,11 @@ Vue.use(VueRouter)
       // 文章
       {path: '/articles/create',component: ArticleEdit},
       {path: '/articles/edit/:id',component: ArticleEdit,props: true},
-      {path: '/articles/list',component: ArticleList}
+      {path: '/articles/list',component: ArticleList},
+
+      {path: '/ads/create',component: AdEdit},
+      {path: '/ads/edit/:id',component: AdEdit,props: true},
+      {path: '/ads/list',component: AdList},
     ]
   },
 ]

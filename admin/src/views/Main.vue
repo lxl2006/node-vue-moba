@@ -1,6 +1,8 @@
 <template>
-    <el-container style="height: 100vh">
+    <!-- 100vh表示屏幕高度 -->
+    <el-container style="height: 100vh"> 
   <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+    <!-- router属性开启菜单的路由导航模式，点击菜单项跳转到index属性所指向的路径 -->
     <el-menu router>
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>内容管理</template>
@@ -24,6 +26,11 @@
           <template slot="title">文章</template>
           <el-menu-item index="/articles/create">新建文章</el-menu-item>
           <el-menu-item index="/articles/list">文章列表</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group>
+          <template slot="title">广告位</template>
+          <el-menu-item index="/ads/create">新建广告位</el-menu-item>
+          <el-menu-item index="/ads/list">广告位列表</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -63,9 +70,4 @@
 </style>
 
 <script>
-  export default {
-    data() {
-      
-    }
-  };
 </script>

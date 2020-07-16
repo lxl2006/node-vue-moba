@@ -1,0 +1,134 @@
+@import './variables';
+
+* {
+    box-sizing: border-box;
+    outline: none; // 取消tab键切换时默认出现的外边框
+}
+
+html {
+    font-size: 12px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2em;
+    background-color: #f1f1f1;
+}
+
+a {
+    color: #999;
+}
+
+
+@each $colorKey, $color in $colors {
+    // text-color
+    .text-#{$colorKey} {
+        color: $color;
+    }
+
+    .bg-#{$colorKey} {
+        background-color: $color;
+    }
+}
+
+// text-align
+@each $var in (left, center, right) {
+    .text-#{$var} {
+        text-align: $var;
+    }
+}
+
+
+@each $sizeKey, $size in $font-sizes {
+    .fs-#{$sizeKey} {
+        font-size: $size * $base-font-size;
+    }
+}
+
+// flex
+.d-flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+
+@each $key, $value in $flex-jc {
+    .jc-#{$key} {
+        justify-content: $value;
+    }
+}
+
+
+@each $key, $value in $flex-ai {
+    .ai-#{$key} {
+        align-items: $value;
+    }
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+
+
+@each $typeKey, $type in $spacing-types {
+    @each $levelKey, $level in $spacing-levels {
+        // .m-0
+        .#{$typeKey}-#{$levelKey} {
+            #{$type}: $level * $spacing-base;
+        }
+        // .mx-2 means margin-left and right
+        .#{$typeKey}x-#{$levelKey} {
+            #{$type}-left: $level * $spacing-base;
+            #{$type}-right: $level * $spacing-base;
+        }
+        // .my-2
+        .#{$typeKey}y-#{$levelKey} {
+            #{$type}-top: $level * $spacing-base;
+            #{$type}-bottom: $level * $spacing-base;
+        }
+    }
+
+    @each $dircKey, $dirc in $spacing-directions {
+        @each $levelKey, $level in $spacing-levels {
+            // .mt-1
+            .#{$typeKey}#{$dircKey}-#{$levelKey} {
+                #{$type}-#{$dirc}: $level * $spacing-base;
+            }
+        }
+    }
+}
+// a {
+//     text-decoration: none;
+// }
+// button
+.btn {
+    border: none;
+    border-radius: 0.1538rem;
+    font-size: map-get($font-sizes, "sm") * $base-font-size;
+    -webkit-font-smoothing: antialiased;
+}
+
+// nav nav-item
+.nav {
+    .nav-item {
+        border-bottom: 3px solid transparent;
+        &.active {
+            border-bottom: 3px solid #fff;
+        }
+    }
+}
+// .nav {
+//     .active {
+//         border-bottom: 3px solid #fff;
+//     }
+// }
+.w-100 {
+    width: 100%;
+}

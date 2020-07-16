@@ -9,6 +9,7 @@ import axios from "axios";
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 let config = {
+  // axios发送异步请求的基地址，后台管理页面的接口的统一前缀是admin/api
   baseURL: 'http://localhost:3000/admin/api'
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
   // timeout: 60 * 1000, // Timeout

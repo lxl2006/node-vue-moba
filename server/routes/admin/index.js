@@ -37,20 +37,25 @@ module.exports = app => {
     })
     // 根据ID获取单个分类
     router.get('/:id', async (req, res) => {
+        // id是在URL中，所以对应req.params
         const model = await req.Model.findById(req.params.id)
         res.send(model)
     })
     // express提供的嵌套路由
     app.use('/admin/api/rest/:resource', async (req, res, next) => {
-        // 把请求资源categories改为数据库中的模型Category
+        // inflection模块下的classify方法把要请求的资源名称categories改为数据库中的模型名称Category
         const modelName = require('inflection').classify(req.params.resource)
         req.Model = require(`../../modules/${modelName}`)
         next()
     }, router)
-
+    // 处理二进制文件的中间件
     const multer = require('multer')
+    // 指定上传的文件路径
     const upload = multer({ dest: path.join(__dirname, '../../uploads') })
+    // 'file'指的是客户端传递来的数据名称
     app.post('/admin/api/upload', upload.single('file'), async(req, res) => {
+        // req.file是multer.single中间件加上的
+        // console.log(req.file)
         const file = req.file
         file.url = `http://localhost:3000/uploads/${file.filename}`
         res.send(file)

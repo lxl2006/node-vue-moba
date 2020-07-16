@@ -3,8 +3,9 @@
   <div>
     <h1>{{ id ? '编辑' : '新建'}}英雄</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
-      <el-tabs value="skill" type="border-card">
-        <el-tab-pane label="基本信息">
+      <!-- value的值是默认打开的标签的name值 -->
+      <el-tabs value="basic" type="border-card">
+        <el-tab-pane label="基本信息" name="basic">
           <el-form-item label="名称">
             <el-input v-model="model.name"></el-input>
           </el-form-item>
@@ -32,6 +33,7 @@
               ></el-option>
             </el-select>
           </el-form-item>
+          <!-- model.scores.difficult很可能报错，因为model是空对象{}，属性scores为undefined。-->
           <el-form-item label="难度">
             <el-rate
               style="margin-top:0.6rem;"
@@ -103,7 +105,7 @@
         </el-tab-pane>
       </el-tabs>
       <el-form-item>
-        <el-button type="primary" native-type="submit">保存</el-button>
+        <el-button type="primary" native-type="submit" style="margin-top: 1rem;">保存</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -120,7 +122,8 @@ export default {
       model: {
         name: "",
         avator: "",
-        scores: {}
+        scores: {},
+        skills: []
       },
       // 英雄种类
       categories: [],
@@ -144,7 +147,7 @@ export default {
     },
     async fetch() {
       const { data: res } = await this.axios.get(`rest/heros/${this.id}`);
-      // this.model = res;
+      // this.model = res;这是对象的完整替换，本身model有scores属性，服务器返回的数据如果没有scores属性，那么赋值后的model就没有scores属性
       this.model = Object.assign({}, this.model, res);
     },
     async fetchCategories() {
@@ -155,6 +158,7 @@ export default {
       const { data: res } = await this.axios.get(`rest/items`);
       this.items = res;
     },
+    // 英雄头像显示
     afterUpload(res) {
       // console.log(res)
       // this.$set(this.model, 'avator', res.url)
