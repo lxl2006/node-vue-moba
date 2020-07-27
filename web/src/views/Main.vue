@@ -8,8 +8,8 @@
       </div>
       <button class="btn bg-primary px-2 py-2">立即下载</button>
     </div>
-    <div class="bg-primary py-2">
-      <div class="nav text-white d-flex jc-around ai-center">
+    <div class="bg-primary pb-2 pt-3">
+      <div class="nav nav-inverse ai-center jc-around">
         <div class="nav-item active">
           <router-link tag="div" to="">首页</router-link>
         </div>
@@ -29,5 +29,10 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss">
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
 </style>

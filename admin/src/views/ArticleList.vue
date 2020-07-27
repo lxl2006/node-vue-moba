@@ -4,7 +4,7 @@
     <!-- 给表格绑定一个数组，表格每一列绑定数组中的对象的相应属性 -->
     <el-table :data="items">
       <el-table-column prop="_id" label="ID" width="240"></el-table-column>
-      <el-table-column prop="title" label="标题" width="140"></el-table-column>
+      <el-table-column prop="title" label="标题" width="400"></el-table-column>
       <el-table-column fixed="right" label="操作" width="180">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="$router.push(`/articles/edit/${scope.row._id}`)">编辑</el-button>

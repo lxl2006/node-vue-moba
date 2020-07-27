@@ -1,40 +1,42 @@
 // colors
 $colors: (
-  'primary': #db9e3f,
-  'info': #4b67af,
-  'danger': #791a15,
-  'blue-1': #1f3695,
-  'blue': #4394e4,
-  'white': #fff,
-  'white-1': #fcfcfc,
-  'white-2': #eceef0,
-  'light': #f9f9f9,
-  'light-1': #d4d9de,
-  'grey': #999,
-  'grey-1': #666,
-  'dark-1': #343440,
-  'dark': #222,
-  'black': #000,
-  
+    "primary": #db9e3f,
+    "info": #4b67af,
+    "danger": #791a15,
+    "blue-1": #1f3695,
+    "blue": #4394e4,
+    "white": #fff,
+    "white-1": #fcfcfc,
+    "white-2": #eceef0,
+    "light": #f9f9f9,
+    "light-1": #d4d9de,
+    "grey": #999,
+    "grey-1": #666,
+    "dark-1": #343440,
+    "dark": #222,
+    "black": #000,
 );
+// border-color
+$border-color: map-get($colors, "light-1");
 
 // font-size
 $base-font-size: 1rem;
 $font-sizes: (
-    xxs: 0.6154,
     // 8px
-        xs: 0.7692,
+        xxs: 0.6154,
     // 10px
-        sm: 0.9231,
+        xs: 0.7692,
     // 12px
-        md: 1,
+        sm: 0.9231,
     // 13px
-        lg: 1.0769,
+        md: 1,
     // 14px
-        xl: 1.2308,
+        lg: 1.0769,
     // 16px
+        xl: 1.2308,
+    // 18px
+        xxl: 1.3846,
 );
-
 
 // justify-content
 $flex-jc: (
@@ -51,6 +53,7 @@ $flex-ai: (
     end: flex-end,
     center: center,
     stretch: stretch,
+    baseline: baseline,
 );
 
 // .mt-1 means margin-top level 1
@@ -60,10 +63,10 @@ $spacing-types: (
     p: padding,
 );
 
-$spacing-directions: (
+$directions: (
     t: top,
     r: right,
-    b: bootom,
+    b: bottom,
     l: left,
 );
 
@@ -77,3 +80,5 @@ $spacing-levels: (
 );
 
 $spacing-base: 1rem;
+
+$border-color: #ebedf0;

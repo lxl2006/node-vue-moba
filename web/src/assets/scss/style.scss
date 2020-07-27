@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 * {
     box-sizing: border-box;
@@ -18,8 +18,8 @@ body {
 
 a {
     color: #999;
+    text-decoration: none;
 }
-
 
 @each $colorKey, $color in $colors {
     // text-color
@@ -32,13 +32,20 @@ a {
     }
 }
 
+// text-ellipsis
+.text-ellipsis {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 // text-align
 @each $var in (left, center, right) {
     .text-#{$var} {
         text-align: $var;
     }
 }
-
 
 @each $sizeKey, $size in $font-sizes {
     .fs-#{$sizeKey} {
@@ -53,13 +60,15 @@ a {
 .flex-column {
     flex-direction: column;
 }
+.flex-wrap {
+    flex-wrap: wrap;
+}
 
 @each $key, $value in $flex-jc {
     .jc-#{$key} {
         justify-content: $value;
     }
 }
-
 
 @each $key, $value in $flex-ai {
     .ai-#{$key} {
@@ -74,8 +83,6 @@ a {
 .flex-grow-1 {
     flex-grow: 1;
 }
-
-
 
 @each $typeKey, $type in $spacing-types {
     @each $levelKey, $level in $spacing-levels {
@@ -95,7 +102,7 @@ a {
         }
     }
 
-    @each $dircKey, $dirc in $spacing-directions {
+    @each $dircKey, $dirc in $directions {
         @each $levelKey, $level in $spacing-levels {
             // .mt-1
             .#{$typeKey}#{$dircKey}-#{$levelKey} {
@@ -117,10 +124,21 @@ a {
 
 // nav nav-item
 .nav {
+    display: flex;
     .nav-item {
         border-bottom: 3px solid transparent;
+        padding-bottom: 0.2rem;
         &.active {
-            border-bottom: 3px solid #fff;
+            color: map-get($colors, "primary");
+            border-bottom-color: map-get($colors, "primary");
+        }
+    }
+    &.nav-inverse {
+        .nav-item {
+            color: map-get($colors, "white");
+            &.active {
+                border-bottom-color: map-get($colors, "white");
+            }
         }
     }
 }
@@ -131,4 +149,15 @@ a {
 // }
 .w-100 {
     width: 100%;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+// border
+@each $k, $v in $directions {
+    .border-#{$v} {
+     border-#{$v}: 1px solid map-get($colors, 'light-1');
+    }
 }
