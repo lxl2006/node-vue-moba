@@ -57,7 +57,7 @@ module.exports = app => {
         // req.file是multer.single中间件加上的
         // console.log(req.file)
         const file = req.file
-        file.url = `http://localhost:3000/uploads/${file.filename}`
+        file.url = `http://www.sq311.xyz/uploads/${file.filename}`
         res.send(file)
     })
 }
