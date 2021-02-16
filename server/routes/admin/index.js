@@ -4,7 +4,7 @@ const router = express.Router({
     mergeParams: true
 })
 // “类别”数据的模型
-// const Category = require('../../modules/Category')
+// const Category = require('../../models/Category')
 
 module.exports = app => {
     // 添加功能的子路由
@@ -45,7 +45,7 @@ module.exports = app => {
     app.use('/admin/api/rest/:resource', async (req, res, next) => {
         // inflection模块下的classify方法把要请求的资源名称categories改为数据库中的模型名称Category
         const modelName = require('inflection').classify(req.params.resource)
-        req.Model = require(`../../modules/${modelName}`)
+        req.Model = require(`../../models/${modelName}`)
         next()
     }, router)
     // 处理二进制文件的中间件

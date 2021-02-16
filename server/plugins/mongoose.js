@@ -7,5 +7,5 @@ module.exports = app => {
     })
 
     // require-all 解决了mongoose.model引入模型时报错：没有schema。
-    require('require-all')(__dirname + '/../modules')
+    require('require-all')(__dirname + '/../models')
 }

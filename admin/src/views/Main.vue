@@ -1,73 +1,83 @@
 <template>
-    <!-- 100vh表示屏幕高度 -->
-    <el-container style="height: 100vh"> 
-  <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-    <!-- router属性开启菜单的路由导航模式，点击菜单项跳转到index属性所指向的路径 -->
-    <el-menu router>
-      <el-submenu index="1">
-        <template slot="title"><i class="el-icon-message"></i>内容管理</template>
-        <el-menu-item-group>
-          <template slot="title">分类</template>
-          <!-- 路由前一定要加/，不然就是相对当前路径，重复点击新建分类会出现/#/categories/categories/create -->
-          <el-menu-item index="/categories/create">新建分类</el-menu-item>
-          <el-menu-item index="/categories/list">分类列表</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group>
-          <template slot="title">物品</template>
-          <el-menu-item index="/items/create">新建物品</el-menu-item>
-          <el-menu-item index="/items/list">物品列表</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group>
-          <template slot="title">英雄</template>
-          <el-menu-item index="/heros/create">新建英雄</el-menu-item>
-          <el-menu-item index="/heros/list">英雄列表</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group>
-          <template slot="title">文章</template>
-          <el-menu-item index="/articles/create">新建文章</el-menu-item>
-          <el-menu-item index="/articles/list">文章列表</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group>
-          <template slot="title">广告位</template>
-          <el-menu-item index="/ads/create">新建广告位</el-menu-item>
-          <el-menu-item index="/ads/list">广告位列表</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-    </el-menu>
-  </el-aside>
-  
-  <el-container>
-    <el-header style="text-align: right; font-size: 12px">
-      <el-dropdown>
-        <i class="el-icon-setting" style="margin-right: 15px"></i>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>查看</el-dropdown-item>
-          <el-dropdown-item>新增</el-dropdown-item>
-          <el-dropdown-item>删除</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-      <span>王小虎</span>
-    </el-header>
-    
-    <el-main>
+  <!-- 100vh表示屏幕高度 -->
+  <el-container style="height: 100vh">
+    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+      <!-- router属性开启菜单的路由导航模式，点击菜单项跳转到index属性所指向的路径 -->
+      <el-menu router>
+        <el-submenu index="1">
+          <template slot="title"
+            ><i class="el-icon-message"></i>内容管理</template
+          >
+          <el-menu-item-group>
+            <template slot="title">分类</template>
+            <!-- 路由前一定要加/，不然就是相对当前路径，重复点击新建分类会出现/#/categories/categories/create -->
+            <el-menu-item index="/categories/create">新建分类</el-menu-item>
+            <el-menu-item index="/categories/list">分类列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">物品</template>
+            <el-menu-item index="/items/create">新建物品</el-menu-item>
+            <el-menu-item index="/items/list">物品列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">英雄</template>
+            <el-menu-item index="/heros/create">新建英雄</el-menu-item>
+            <el-menu-item index="/heros/list">英雄列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">文章</template>
+            <el-menu-item index="/articles/create">新建文章</el-menu-item>
+            <el-menu-item index="/articles/list">文章列表</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group>
+            <template slot="title">广告位</template>
+            <el-menu-item index="/ads/create">新建广告位</el-menu-item>
+            <el-menu-item index="/ads/list">广告位列表</el-menu-item>
+          </el-menu-item-group>
+        </el-submenu>
+      </el-menu>
+    </el-aside>
+
+    <el-container>
+      <el-header style="text-align: right; font-size: 12px">
+        <el-dropdown>
+          <i class="el-icon-setting" style="margin-right: 15px"></i>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>查看</el-dropdown-item>
+            <el-dropdown-item>新增</el-dropdown-item>
+            <el-dropdown-item>删除</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+        <span>王小虎</span>
+      </el-header>
+
+      <el-main>
         <router-view :key="$route.path"></router-view>
-    </el-main>
+      </el-main>
+    </el-container>
   </el-container>
-</el-container>
 </template>
 
 
 <style>
-  .el-header {
-    background-color: #B3C0D1;
-    color: #333;
-    line-height: 60px;
-  }
-  
-  .el-aside {
-    color: #333;
-  }
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+  line-height: 60px;
+}
+
+.el-aside {
+  color: #333;
+}
 </style>
 
 <script>
+export default {
+  data() {
+    return {
+    }
+  },
+  methods: {
+  }
+}
 </script>
