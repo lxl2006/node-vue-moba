@@ -21,6 +21,7 @@ const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
   function(config) {
+		config.headers.Authorization = 'Bearer ' + localStorage.token;
     // Do something before request is sent
     return config;
   },
@@ -37,6 +38,12 @@ _axios.interceptors.response.use(
     return response;
   },
   function(error) {
+		if(error.response.data){
+			Vue.prototype.$message({
+				type: 'error',
+				message: error.response.data.message
+			})
+		}
     // Do something with response error
     return Promise.reject(error);
   }
